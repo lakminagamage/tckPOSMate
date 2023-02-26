@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} <title>  TCK-POSmate - Verify Email </title>{% endblock %}
+
+{% block header %}
+{% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar-default.html' %}
+{% endblock %}
+
+{% block main %}
+<main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+    <h2> Done! Go check your inbox. </h2>
+
+    <p> We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please
+        <a href="https://tck.lk/contacts">contact us </a>if you do not receive it within a few minutes.</p>
+    </section>
+</main>
+{% endblock %}

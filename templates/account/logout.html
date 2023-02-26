@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{%  load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+    <title>TCK POSmate - Logout</title>
+ {% endblock %}
+
+{% block header %}
+{% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar-default.html' %}
+{% endblock %}
+
+{% block main %}
+<main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+
+<h2>You are about to sign out!</h2>
+
+<p>Are you sure you want to sign out?</p>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit" class="btn btn-danger">Yes</button>
+  <a type="submit" href="{% url 'homeUrl' %}" class="btn btn-success">No</a>
+</form>
+</section>
+</main>
+
+{% endblock %}
+

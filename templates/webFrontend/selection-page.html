@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{%  load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+    <title>TCK POSmate - Welcome</title>
+ {% endblock %}
+
+{% block header %}
+    {% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'sidebar-default.html' %}
+{% endblock %}
+
+{% block main %}
+
+
+<main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+
+    {% if request.user.is_authenticated %}
+    <div class="container">
+  <div class="card-body">
+              <h5 class="card-title">You have successfully logged in as {{ request.user.first_name }}.</h5>
+              <p class="card-text">Choose your preferences to continue.</p>
+            </div>
+        <div class="card-title"><h5>Store Preferences</h5></div>
+        <div class="row">
+            <div class="col-3"><div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Naftaliya</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Fashion Store</h6>
+              <p class="card-text">Naftaliya Fashion Store Admin Dashboard.</p>
+              <p class="card-text"><a href="#" class="btn btn-primary">Proceed</a></p>
+
+            </div>
+          </div></div>
+            <div class="col-3"><div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Uptown</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Kandy City Center</h6>
+              <p class="card-text">Uptown - Kandy Management Console.</p>
+              <p class="card-text"><a href="#" class="btn btn-primary">Proceed</a></p>
+
+            </div>
+          </div></div>
+            <div class="col-3"><div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Idealz.lk</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Online Store</h6>
+              <p class="card-text">Online sales Management center.</p>
+              <p class="card-text"><a href="#" class="btn btn-primary">Proceed</a></p>
+
+            </div>
+          </div></div>
+        </div>
+        <div class="card-title"><h5>Account Preferences</h5></div>
+        <div class="row">
+            <div class="col-3">
+                {% if request.user.username %}
+                    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Your Account</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Manage your account preferences</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-primary">Manage</a></p>
+
+            </div>
+          </div>
+
+            {% else %}
+                <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Your Account</h5>
+              <h6 class="card-subtitle mb-2 btn btn-danger">You have not added your user data !.</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-danger">Add them here</a></p>
+
+            </div>
+          </div>
+                {% endif %}
+            </div>
+            <div class="col-3"><div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Employee Accounts</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Get employee account details.</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-primary">Manage</a></p>
+
+            </div>
+          </div></div>
+
+        </div>
+</div>
+    {% else %}
+        <div class="container">
+            <h3> This page requires you to have a verified Email address !</h3>
+            <h4 class="btn btn-danger pt-2">Your Email is not been verified yet.</h4>
+            <br>
+            <a href="{% url 'account_email' %}" class="btn btn-info mt-5">Click here to see your Email Addresses.</a>
+        </div>
+    {% endif %}
+    </section>
+    </main>
+{% endblock %}

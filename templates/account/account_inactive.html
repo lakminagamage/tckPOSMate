@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} <title>TCK POSMate - Account Inactive </title> {% endblock %}
+
+{% block main %}
+    <div class="container mobile-devices"><a href="{% url 'homeUrl' %}" class="mt-5 logo d-flex align-items-center w-auto">
+
+                  <span class="d-none d-lg-block login-h1">TCK POSmate</span>
+                </a></div>
+    <div class="container section mobile-devices">
+
+        <div class="col-md-2 pt-5 mt-5">
+            <h1> Your account is Inactive! </h1>
+            <div class="btn btn-danger"><p> your account is inactive for some reasons. Please contact support team at TCK. </p></div>
+        </div>
+        <div class="col-md-3 mt-3">Call TCK on <a href="tel:+947661617">+94 77 7661617</a>
+            <br>
+        Email TCK <a class="mt-3" href="mailto:accounts@tck.lk">here.</a>
+            <br>
+            <div class="col-md-3 ">
+
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

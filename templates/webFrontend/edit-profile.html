@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{%  load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>TCK POSmate - Welcome</title>
+ {% endblock %}
+
+{% block header %}
+    {% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'sidebar-default.html' %}
+{% endblock %}
+
+{% block main %}
+<main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+    <div class="container">
+        <h1 class="mb-3">Your Profile</h1>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+                <h4 class="text-center mt-3 mb-3 text-decoration-underline text-muted">Add or Remove your account details.</h4>
+                {% csrf_token %}
+            {{ profile_form|crispy }}
+
+                <div class="text-center mt-4">
+
+            </div>
+                <div class="row mt-4">
+                <div class="col">
+            <button class="btn btn-primary" type="submit">Update Account Details</button>
+                    </div>
+                <div class="col">
+            <a href="{% url 'homeUrl' %}" class="btn btn-success">Return Home</a>
+                    </div>
+            </div>
+            </form></div>
+                <div class="col-lg-3"></div>
+                </div>
+
+
+
+
+        </div>
+</div>
+    </section>
+    </main>
+{% endblock %}

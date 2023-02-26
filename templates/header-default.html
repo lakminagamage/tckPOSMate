@@ -1,0 +1,161 @@
+{% load static %}
+{% block header %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{%  url 'homeUrl' %}" class="logo d-flex align-items-center">
+        <span><img src="{% static 'assets/img/tck.svg' %}"  width="50px" height="50px" alt=""></span>
+        <span class="d-none d-lg-block">TCK POSmate</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>{% if messages %}
+              {% for count_of_msg in messages %}
+
+            {% if forloop.last %}
+            <span class="badge bg-primary badge-number">{{ forloop.counter }}</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+
+
+
+
+            <li class="dropdown-header">
+              You have {{ forloop.counter }} new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+                  {% endif %}
+          {% endfor %}
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+
+
+
+
+            {% for message in messages  %}
+
+
+
+
+        </div>
+
+            <li {% if message.tags %} class="notification-item {{ message.tags }}" {% endif %}>
+              <i class="bi bi-exclamation-circle"></i>
+              <div>
+                <h4>{{ message }}</h4>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            {% endfor %}
+
+
+
+
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+        {% else %}
+        <span class="badge bg-primary badge-number">0</span>
+          </a><!-- End Notification Icon for no messages -->
+        {% endif %}
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img width="60px" height="100px" src="{{ request.user.profile.image.url }}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ request.user.email }}</span>
+          </a><!-- End Profile Image Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-item align-center"> <span class="rounded-circle align-content-center"><img src="{{request.user.profile.image.url}}" width="210px" height="210px" alt="user pic"></span></li>
+            <li class="dropdown-header">
+                {% if request.user.username %}
+              <h6>{{ request.user.username }}</h6>
+                {% else %}
+                <a class="btn btn-danger row-cols-1" href="{% url 'profileUrl' %}">You have not added your User data. <br> Please add them here</a>
+                {% endif %}
+
+                {% if request.user.email %}
+              <span>{{  request.user.email }} </span>
+                {% else %}
+                <span>You have not added your User data. Please add them <a href="{% url 'profileUrl' %}">here</a></span>
+                {% endif %}
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'profileUrl' %}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'accountsettingsUrl' %}">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'faqUrl' %}">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+  {% endblock %}

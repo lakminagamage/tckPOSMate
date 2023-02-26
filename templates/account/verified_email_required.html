@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} <title>TCK POSmate - No Verification</title> {% endblock %}
+
+{% block header %}
+{% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar-default.html' %}
+{% endblock %}
+
+{% block main %}
+    <main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+<h1> Oops! Verified E-mail Address required. </h1>
+
+{% url 'account_email' as email_url %}
+
+<p>To access this section of the TCK POSmate, you are required to have a verified email address. </p>
+
+<p>We have sent an e-mail to you for
+verification. Please click on the link inside this e-mail. Please
+    <a href="https://tck.lk/contacts">contact us</a> if you do not receive it within a few minutes.</p>
+
+<p><strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.</p>
+
+    </section>
+</main>
+{% endblock %}

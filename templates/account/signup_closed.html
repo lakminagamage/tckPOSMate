@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %} <title> Sign Up Closed </title>{% endblock %}
+
+{% block main %}
+    <main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+        <a href="{% url 'homeUrl' %}" class="logo d-flex align-items-center w-auto">
+
+                  <span class="d-none d-lg-block login-h1 mb-3">TCK POSmate</span>
+                </a>
+<h1>Sign Up Closed</h1>
+
+<p>We are sorry, but the sign up is currently closed.
+</p>
+        <p><a href="https://tck.lk/contacts">Contact us </a>for further inquiries.</p>
+    </section>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<body>
+    <h1 class="btn btn-info">Please Confirm Your Email</h1>
+    <h3>You're receiving this e-mail because user {{ user_display }} has given your e-mail address to register an account on TCK POSmate.
+To confirm this is correct, Click <a href="{{ activate_url }}"> here</a> or the link below.</h3>
+    <br>
+    <a href="{{ activate_url }}">{{ activate_url }}</a>
+    <br>
+    <img src="https://www.tck.lk/static/assets/img/logo.png" width="200px" height="200px" alt="tck logo">
+    <h4>You are receiving this email because you requested an account at posmate.tck.lk . If you did not do this, Please ignore this email.</h4>
+</body>
+{% endblock %}
+</html>

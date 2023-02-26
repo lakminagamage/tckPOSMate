@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{%  load static %}
+
+{% block header %}
+{% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar-default.html' %}
+{% endblock %}
+
+
+{% block main %}
+    <main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+    <div class="container">
+  <div class="row align-content-center">
+
+        <h1 class="mt-4 mb-3">One account - All of POSMate</h1>
+  </div>
+        <div class="container">
+
+
+
+        <div class="card-title"><h5>Account Preferences</h5></div>
+        <div class="row">
+            <div class="col-3">
+                {% if request.user.username %}
+                    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Your POSMate Account</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Manage your account preferences</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-primary">Manage</a></p>
+
+            </div>
+          </div>
+
+            {% else %}
+                <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Your Account</h5>
+              <h6 class="card-subtitle mb-2 btn btn-danger">You have not added your user data !.</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-danger">Add them here</a></p>
+
+            </div>
+          </div>
+                {% endif %}
+            </div>
+            <div class="col-3"><div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Employee Accounts</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Get employee account details.</h6>
+              <p class="card-text"><a href="{% url 'profileUrl' %}" class="btn btn-primary">Manage</a></p>
+
+            </div>
+          </div></div>
+
+        </div>
+</div>
+    </div>
+    </section>
+    </main>
+{% endblock %}
+

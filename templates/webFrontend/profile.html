@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{%  load static %}
+
+{% block title %}
+    <title>TCK POSmate - Profile</title>
+ {% endblock %}
+
+{% block header %}
+{% include 'header-default.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar-default.html' %}
+{% endblock %}
+
+
+
+{% block main %}
+
+              <main id="main" class="main">
+    <section class="section emails-page-wrapper mobile-devices">
+    <h1 class="p-2">TCK POSMate - My Profile</h1>
+
+    <div class="card-body">
+    <h4 class="p-3 text-muted text-decoration-underline">Your Business Account info are listed below.</h4>
+        <div class="card-img ">
+
+    <div class="align-content-center mt-2 mb-4">
+        <a href="{{ request.user.profile.image.url }}"><span><img class="border border-dark rounded" src="{{ request.user.profile.image.url}}" alt="Image" width="200px" height="200px"></span></a></div>
+</div>
+
+        <div class="row">
+        <div class="col">
+        <form>
+                {% if request.user.username %}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Username</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.username }}</label>
+                  </div>
+                </div>
+                  {% endif %}
+                {% if request.user.profile.first_name %}
+                  <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">First Name</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.profile.first_name }}</label>
+                  </div>
+                </div>
+                {% endif %}
+                {% if request.user.last_name %}
+                  <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Last Name</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.profile.last_name }}</label>
+                  </div>
+                </div>
+                {% endif %}
+                {% if request.user.email %}
+                  <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.email }}</label>
+                  </div>
+                </div>
+                {% endif %}
+                {% if request.user.profile.contact_number %}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Contact Number</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.profile.contact_number }}</label>
+                  </div>
+                </div>
+                {% endif %}
+                {% if request.user.profile.address %}
+              <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Address</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.profile.address }}</label>
+                  </div>
+                </div>
+                {% endif %}
+                {% if request.user.profile.about %}
+              <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">About</label>
+                  <div class="col-sm-10">
+                    <label type="text" class="form-control">{{ request.user.profile.about }}</label>
+                  </div>
+                </div>
+                {% endif %}
+
+            <div class="row mt-4">
+                <div class="col">
+            <a href="{% url 'profileupdateUrl' %}" class="btn btn-primary">Update or Remove Details</a>
+                    </div>
+                <div class="col">
+            <a href="{% url 'homeUrl' %}" class="btn btn-success">Return Home</a>
+                    </div>
+            </div>
+              </form>
+        </div>
+        <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    </section>
+              </main>
+{% endblock %}
+
